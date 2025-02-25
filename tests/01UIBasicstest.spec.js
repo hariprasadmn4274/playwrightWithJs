@@ -1,3 +1,13 @@
+/* 
+RUN COMMONDS
+1.npx playwright test
+2.npx playwright test --headed
+3.npx playwright show-report
+4.npx playwright test tests/01UIBasicstest.spec.js
+5.npx playwright test --project=chromium
+
+*/
+
 //import { test, expect } from '@playwright/test';
 //or 
 const {test, expect} =require('@playwright/test')
@@ -15,7 +25,7 @@ test('first playwright test1', function(){
 //so we keep await for every step: but await will use only when we mention 'async'that we using it bcs we handdling asynchronous code: 
 test('first playwright test2',async function(){
         //step1
-        //await step1();
+        //await step1(); it waits untill step 1 get excuted fully. 
         //step2
        // await step2();
         //step3
