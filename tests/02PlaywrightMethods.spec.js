@@ -3,19 +3,18 @@
 
 2.class--> .classValue  (or) tagname.classValue
 
-3.any attribute--> [attribute='value]
-
+3.any attribute--> [attribute='value']
+   if we want to use part of atribute value then follow like below
+   [attribute*='part of value']
 4.test--> text="textValue"
 
-5.parent to child traverse-->parentTagname>>childTagname
+5.parent to child traverse-->parentTagname(space)childTagname
                         ex:
                         -->.classValue(space)tagname  ==>.card-body a
                         
 */
 const {test,expect}=require('@playwright/test')
-const exp = require('constants')
-const { use } = require('../playwright.config')
-const { sign } = require('crypto')
+
 
 test('validating login error',async({page})=>{
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/')
@@ -27,7 +26,7 @@ test('validating login error',async({page})=>{
     await page.locator('#signInBtn').click()
     
     console.log(await page.locator("[style*='block']").textContent())
-                                                        //^extract text from there
+                                                        //^extract text from there, getting error merssage from pop up
      await expect(page.locator("[style*='block']")).toContainText('Incorrect')
                                                         //^ check substring there
 
@@ -35,7 +34,7 @@ test('validating login error',async({page})=>{
 })
 
 
-test.only('validate home page  by giving valid credentials',async({page})=>{
+test('validate home page  by giving valid credentials',async({page})=>{
 
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/')
     await expect(page).toHaveTitle('LoginPage Practise | Rahul Shetty Academy')
@@ -64,7 +63,7 @@ test.only('validate home page  by giving valid credentials',async({page})=>{
        // console.log(await page.locator('.card-body a').textContent()) for this line we get 4 elements but I want only first one so we follow below menthods
 
     console.log(await cardTitles.first().textContent())
-                                                    //^last() only first and last is there
+                                                    //^last(). only first and last is there
     console.log(await cardTitles.nth(1).textContent())
    const allCards=await cardTitles.allTextContents()
                                     //^ collect all text
