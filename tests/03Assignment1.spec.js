@@ -1,5 +1,4 @@
 const{ test, expect}=require('@playwright/test')
-const exp = require('constants')
 
 test.only('register',async({page})=>{
     const emai=page.locator('#userEmail')
@@ -36,11 +35,20 @@ test.only('register',async({page})=>{
     const firstword=await page.locator('h5 b').first().textContent()
     console.log(firstword)
 
-    
-    console.log(await page.locator('h5 b').first().textContent())
-    console.log(await page.locator('h5 b').last().textContent())
-    console.log(await page.locator('h5 b').nth(1).textContent())
+    //One way: get all products
+    console.log(await page.locator('h5 b').first().textContent())//we use .textContent() method before using allTextContents() method because playwright doesnt have auto wait for allTextContents(). but textContent().so 
     console.log(await page.locator('h5 b').allTextContents())
+
+    //2nd way: use technique to wait dynomically 
+    await page.waitForLoadState('networkidle')//this wait till network(all api calls or page)gets loaded, then it will fetch . but this is also fleky sometimes.
+    console.log(await page.locator('h5 b').allTextContents())
+
+    //3rd way: so use waitFor() method.
+    //await page.locator('h5 b').waitFor()// if u use only waitFor(), it will get confuse that for how many text should need to wait, as we get list of products and finally gives [] null
+    await page.locator('h5 b').first().waitFor()// now it will wait for 1st then all will get loaded
+    console.log(await page.locator('h5 b').allTextContents())
+
+
 
 
 })
