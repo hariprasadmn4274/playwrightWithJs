@@ -14,7 +14,11 @@ test.only('register',async({page})=>{
     await page.locator('#lastName').fill('reddy')
     await page.locator('#userEmail').fill('hariprasadreddy@gmail.com')
     await page.locator('#userMobile').fill('8050666989')
+
+    //dropdown handling
     await page.locator("[formcontrolname='occupation']").selectOption({ label: 'Engineer' });
+
+    
     await page.locator('[value="Male"]').check()
     await page.locator('#userPassword').fill('Hariprasad4274@')
     await page.locator('#confirmPassword').fill('Hariprasad4274@')
@@ -47,8 +51,5 @@ test.only('register',async({page})=>{
     //await page.locator('h5 b').waitFor()// if u use only waitFor(), it will get confuse that for how many text should need to wait, as we get list of products and finally gives [] null
     await page.locator('h5 b').first().waitFor()// now it will wait for 1st then all will get loaded
     console.log(await page.locator('h5 b').allTextContents())
-
-
-
 
 })

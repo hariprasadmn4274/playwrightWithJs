@@ -2,6 +2,7 @@
 1.id--> #idValue (or) tagname#idValue
 
 2.class--> .classValue  (or) tagname.classValue
+      //tagname.classValue--> this we can use during 'drop downs' or getting list of products etc
 
 3.any attribute--> [attribute='value']
    if we want to use part of atribute value then follow like below

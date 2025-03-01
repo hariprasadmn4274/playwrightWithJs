@@ -7,7 +7,7 @@ module.exports = defineConfig({
   testDir: './tests',
 
   //1b.maximun time for one test can run. Defaults to 30 seconds.
-  timeout: 30*1000,
+  timeout: 10*1000,
   expect:{
     timeout:5*1000 //5 sec for executing that expecct assertion 
   },
