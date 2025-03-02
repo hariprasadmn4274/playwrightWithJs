@@ -1,6 +1,6 @@
 const{ test, expect}=require('@playwright/test')
 
-test.only('register',async({page})=>{
+test('register',async({page})=>{
     const emai=page.locator('#userEmail')
     const password=page.locator('#userPassword')
     const login=page.locator('#login')
@@ -18,7 +18,7 @@ test.only('register',async({page})=>{
     //dropdown handling
     await page.locator("[formcontrolname='occupation']").selectOption({ label: 'Engineer' });
 
-    
+
     await page.locator('[value="Male"]').check()
     await page.locator('#userPassword').fill('Hariprasad4274@')
     await page.locator('#confirmPassword').fill('Hariprasad4274@')
@@ -40,7 +40,7 @@ test.only('register',async({page})=>{
     console.log(firstword)
 
     //One way: get all products
-    console.log(await page.locator('h5 b').first().textContent())//we use .textContent() method before using allTextContents() method because playwright doesnt have auto wait for allTextContents(). but textContent().so 
+    console.log(await page.locator('abcd ').first().textContent())//we use .textContent() method before using allTextContents() method because playwright doesnt have auto wait for allTextContents(). but textContent().so 
     console.log(await page.locator('h5 b').allTextContents())
 
     //2nd way: use technique to wait dynomically 

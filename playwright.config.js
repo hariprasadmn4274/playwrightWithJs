@@ -24,7 +24,9 @@ module.exports = defineConfig({
   use: {//here whatever settings you keep, it will be followed by all the test cases.
 
     browserName:'chromium',  //1f.'firefox','webkit'(for safari)
-    headless: false //1e   
+    headless: false, //1e  
+    screenshot : 'on',
+    trace : 'on',  
   },
 });
 
